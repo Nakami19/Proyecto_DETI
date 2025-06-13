@@ -7,7 +7,7 @@ public class Character : MonoBehaviour
     #region Variables
 
     Camera mainCamera;
-    public GameManager gameManager;
+    //public GameManager gameManager;
 
 
     [Header("Variables de movimiento")]
@@ -39,6 +39,15 @@ public class Character : MonoBehaviour
     bool isTouchingWallRight;
     bool isInAir;
     bool onRightWall;
+
+    [Header("Variables del Disparo")]
+    //public GameObject bullet;
+    public Transform bulletSpawnPoint;
+    public float bulletSpeed = 20f;
+
+    [Header("Efectos de sonifo")]
+    [SerializeField] private AudioClip hurtSound;
+    [SerializeField] private AudioClip shootSound;
 
 
     CharacterController controller;
@@ -86,7 +95,7 @@ public class Character : MonoBehaviour
         Cursor.visible = false; //Oculta el cursor
         mainCamera = Camera.main; //Obtiene la camara principal
 
-        gameManager = Object.FindFirstObjectByType<GameManager>();
+        //gameManager = Object.FindFirstObjectByType<GameManager>();
     }
 
     // Update is called once per frame
@@ -102,8 +111,14 @@ public class Character : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.V)) 
         {
-            gameManager.takeDamage(1);
-            //Object.FindFirstObjectByType<GameManager>().takeDamage(1); //Prueba de daño al jugador
+            GameManager.Instance.takeDamage(1);
+            AudioManager.Instance.playSound(hurtSound); //Reproduce el sonido de daï¿½o
+            //Object.FindFirstObjectByType<GameManager>().takeDamage(1); //Prueba de daï¿½o al jugador
+        }
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            Shoot();
         }
     }
 
@@ -238,6 +253,24 @@ public class Character : MonoBehaviour
     {
         verticalVelocity = Mathf.Sqrt(force * -2f * gravity);
         hasBounced = true;
+    }
+
+    public void Shoot()
+    {
+        GameObject bullet = BulletPool.Instance.requestBullet();
+
+        bullet.transform.position = bulletSpawnPoint.position;
+        bullet.transform.rotation = bulletSpawnPoint.rotation;
+
+        Rigidbody rb = bullet.GetComponent<Rigidbody>();
+        if (rb != null)
+        {
+            rb.linearVelocity = bulletSpawnPoint.forward * bulletSpeed;
+        }
+
+        AudioManager.Instance.playSound(shootSound); //Reproduce el sonido de disparo
+
+        Debug.Log("Bullet shot from " + bulletSpawnPoint.position);
     }
 
 }

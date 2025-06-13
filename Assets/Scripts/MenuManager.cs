@@ -3,19 +3,18 @@ using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+
+    [SerializeField] private AudioClip menuClickSound; // Sound to play when switching scenes
+    [SerializeField] private AudioClip MainMusic; 
+
+    private void Start()
     {
-        
+        // Play the main music when the menu starts
+        AudioManager.Instance.playMusic(MainMusic);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    public void switchScene(string SceneName) { 
+    public void switchScene(string SceneName) {
+        AudioManager.Instance.playSound(menuClickSound); // Play sound when switching scenes
         SceneManager.LoadScene(SceneName);
     }
 }

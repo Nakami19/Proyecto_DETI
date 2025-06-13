@@ -130,6 +130,7 @@ GameObject:
   - component: {fileID: 375893272}
   - component: {fileID: 375893274}
   - component: {fileID: 375893273}
+  - component: {fileID: 375893275}
   m_Layer: 5
   m_Name: Side Panel
   m_TagString: Untagged
@@ -155,7 +156,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -298.59106, y: 0.00050831}
+  m_AnchoredPosition: {x: -298.591, y: 0.00050831}
   m_SizeDelta: {x: -593.783, y: 450}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &375893273
@@ -196,6 +197,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 375893271}
   m_CullTransparentMesh: 1
+--- !u!114 &375893275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 375893271}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecf4046375ff42a419a506bd714f0f24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  menuClickSound: {fileID: 8300000, guid: adef5c105a2dce140af82a6ae78ac774, type: 3}
+  MainMusic: {fileID: 8300000, guid: 737fb6195a9ee99448085fd519afc4a8, type: 3}
 --- !u!1 &436383282
 GameObject:
   m_ObjectHideFlags: 0
@@ -693,6 +708,67 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
+--- !u!1001 &1605470421
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1809390189949365993, guid: e567f3daf0312c14eab80bbd134f6891, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -11.54619
+      objectReference: {fileID: 0}
+    - target: {fileID: 1809390189949365993, guid: e567f3daf0312c14eab80bbd134f6891, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1809390189949365993, guid: e567f3daf0312c14eab80bbd134f6891, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 61.87082
+      objectReference: {fileID: 0}
+    - target: {fileID: 1809390189949365993, guid: e567f3daf0312c14eab80bbd134f6891, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1809390189949365993, guid: e567f3daf0312c14eab80bbd134f6891, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1809390189949365993, guid: e567f3daf0312c14eab80bbd134f6891, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1809390189949365993, guid: e567f3daf0312c14eab80bbd134f6891, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1809390189949365993, guid: e567f3daf0312c14eab80bbd134f6891, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1809390189949365993, guid: e567f3daf0312c14eab80bbd134f6891, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1809390189949365993, guid: e567f3daf0312c14eab80bbd134f6891, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7861870024875175517, guid: e567f3daf0312c14eab80bbd134f6891, type: 3}
+      propertyPath: m_Volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8080139316494348808, guid: e567f3daf0312c14eab80bbd134f6891, type: 3}
+      propertyPath: m_Name
+      value: AudioManager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e567f3daf0312c14eab80bbd134f6891, type: 3}
 --- !u!1 &1716112884
 GameObject:
   m_ObjectHideFlags: 0
@@ -1073,7 +1149,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Reto-HUD
+          m_StringArgument: Design_Pattern
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1944417894
@@ -1126,6 +1202,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecf4046375ff42a419a506bd714f0f24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  menuClickSound: {fileID: 8300000, guid: adef5c105a2dce140af82a6ae78ac774, type: 3}
+  MainMusic: {fileID: 0}
 --- !u!1 &1976651674
 GameObject:
   m_ObjectHideFlags: 0
@@ -1213,3 +1291,4 @@ SceneRoots:
   - {fileID: 1417642221}
   - {fileID: 436383286}
   - {fileID: 1976651677}
+  - {fileID: 1605470421}

@@ -5,9 +5,21 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Reto1_CharacterController.unity
     guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/Scenes/Main_Menu.unity
+    guid: 756401162232e2a4792ae0aa0ef9526b
+  - enabled: 1
+    path: Assets/Scenes/Reto2.unity
+    guid: 7ec35123469231245a6edaf6babe498e
+  - enabled: 1
+    path: Assets/Scenes/Reto-HUD.unity
+    guid: 6efd5fad72c603048ab5052edbeae2ba
+  - enabled: 1
+    path: Assets/Scenes/Design_Pattern.unity
+    guid: 73485c97f0361dc4db11372998cc7c09
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
