@@ -155,8 +155,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a2620e6476d9b0418007f01d1671fcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 7
-  currentSpeed: 7
+  speed: 14
+  currentSpeed: 14
   gravity: -20
   jumpHeight: 2.5
   acceleration: 5.5
@@ -170,9 +170,10 @@ MonoBehaviour:
   wallRunGravity: -0.5
   maxFallSpeed: -1.5
   wallJumpForceMultiplier: 1.1
-  bullet: {fileID: 0}
   bulletSpawnPoint: {fileID: 2024173882527111844}
   bulletSpeed: 20
+  hurtSound: {fileID: 8300000, guid: d86053b16fa8398499828ef42db305cb, type: 3}
+  shootSound: {fileID: 8300000, guid: 6e71de6d703ca3c4f9a57eabbb3e7b62, type: 3}
 --- !u!54 &8396397027183838386
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -465,7 +466,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   detectionLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 128
   rayDirection: {x: 1, y: 0, z: 0}
   rayLength: 1
   rotateWithTransform: 0
@@ -515,7 +516,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   detectionLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 128
   rayDirection: {x: -1, y: 0, z: 0}
   rayLength: 1
   rotateWithTransform: 0

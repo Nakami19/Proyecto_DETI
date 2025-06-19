@@ -45,9 +45,13 @@ public class Character : MonoBehaviour
     public Transform bulletSpawnPoint;
     public float bulletSpeed = 20f;
 
-    [Header("Efectos de sonifo")]
+    [Header("Efectos de sonido")]
     [SerializeField] private AudioClip hurtSound;
     [SerializeField] private AudioClip shootSound;
+
+    //Variables de plataformas
+    Transform currentPlatform = null;
+    MovingPlatform movingPlatform = null;
 
 
     CharacterController controller;
@@ -125,15 +129,6 @@ public class Character : MonoBehaviour
     void PlayerMove()
     {
         if (isWallRunning) return;
-
-        if (Input.GetKey(KeyCode.LeftShift))
-        {
-            currentSpeed = 2 * speed; //Aumenta la velocidad al correr
-        }
-        else
-        {
-            currentSpeed = speed; //Vuelve a la velocidad normal
-        }
 
         //Movimiento plano XZ relativo a la camara
 

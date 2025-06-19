@@ -6,6 +6,7 @@ public class DoorMover : MonoBehaviour
     private Vector3 openPosition; // Posición final de la puerta
     private Vector3 closedPosition; // Posición inicial
     public float speed = 2f; // Velocidad de movimiento
+    public float timeBeforeClosing = 1f;
     private bool isOpening = false;
     private bool isClosing = false;
 
