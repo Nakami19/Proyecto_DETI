@@ -91860,7 +91860,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 650659115245550591, guid: 92fc37a62f26b8d4bb3b21280d1e5f2a, type: 3}
       propertyPath: rayLength
-      value: 1.2
+      value: 1.15
       objectReference: {fileID: 0}
     - target: {fileID: 2027624203930694477, guid: 92fc37a62f26b8d4bb3b21280d1e5f2a, type: 3}
       propertyPath: m_LocalPosition.x
