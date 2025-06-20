@@ -24,6 +24,10 @@ public class Character : MonoBehaviour
     public CollisionDetectorRaycast leftCollider;
     public CollisionDetectorRaycast rightCollider;
 
+    [Header("Variable para checkear piso")]
+    public CollisionDetectorRaycast downCollider;
+    public bool grounded;
+
     [Header("Variables del Wallrun")]
     [SerializeField] private float wallJumpCooldown = 2f;
     private float wallJumpCooldownTimer = 0f;
@@ -51,7 +55,7 @@ public class Character : MonoBehaviour
 
     //Variables de plataformas
     Transform currentPlatform = null;
-    MovingPlatform movingPlatform = null;
+    PlatformMovementDetector movingPlatform = null;
 
 
     CharacterController controller;
@@ -75,7 +79,7 @@ public class Character : MonoBehaviour
         playerControls.Player.Move.canceled += ctx => moveInput = Vector2.zero; //Captura fin del movimiento
         playerControls.Player.Jump.performed += ctx =>
         {
-            if (controller.isGrounded)
+            if (grounded)
                 wantJump = true;
             else if (isWallRunning)
                 wantWallJump = true;
@@ -105,13 +109,31 @@ public class Character : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        grounded = downCollider.isColliding;
+
+        Debug.Log("Esta en el piso:" + grounded);
+
         WallRun();
         if (wallJumpCooldownTimer > 0f)
         {
             wallJumpCooldownTimer -= Time.deltaTime;
         }
+
         Jump();
         PlayerMove();
+
+        if (grounded && currentPlatform != null && movingPlatform != null)
+        {
+            // Apply platform movement
+            controller.Move(movingPlatform.DeltaPosition);
+
+            // Apply platform rotation around platform's pivot
+            Vector3 relativePos = transform.position - currentPlatform.position;
+            relativePos = movingPlatform.DeltaRotation * relativePos;
+            Vector3 newWorldPos = currentPlatform.position + relativePos;
+
+            controller.Move(newWorldPos - transform.position);
+        }
 
         if (Input.GetKeyDown(KeyCode.V)) 
         {
@@ -146,7 +168,7 @@ public class Character : MonoBehaviour
 
     void Jump()
     {
-        if (controller.isGrounded)
+        if (grounded)
         {
             if (wantJump)
             {
@@ -180,7 +202,7 @@ public class Character : MonoBehaviour
 
         isTouchingWallLeft = leftCollider.isColliding;
         isTouchingWallRight = rightCollider.isColliding;
-        isInAir = !controller.isGrounded;
+        isInAir = !grounded;
 
         if ((isTouchingWallLeft || isTouchingWallRight) && isInAir && isSpeedEnough && isMovingForward)
         {
@@ -240,6 +262,21 @@ public class Character : MonoBehaviour
         {
             //Llamo al salto
             Bounce(bounceHeight);
+        }
+
+        if (grounded)
+        {
+            PlatformMovementDetector mp = hit.collider.GetComponent<PlatformMovementDetector>();
+            if (mp != null)
+            {
+                currentPlatform = mp.transform;
+                movingPlatform = mp;
+            }
+            else
+            {
+                currentPlatform = null;
+                movingPlatform = null;
+            }
         }
     }
 
