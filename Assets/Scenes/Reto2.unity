@@ -13276,6 +13276,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
+  timeBeforeClosing: 1
 --- !u!65 &922461791
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15769,6 +15770,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
+  timeBeforeClosing: 1
 --- !u!1 &1120239228
 GameObject:
   m_ObjectHideFlags: 0
