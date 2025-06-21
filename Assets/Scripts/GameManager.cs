@@ -50,6 +50,7 @@ public class GameManager : MonoBehaviour
         UIManager.Instance.PlayerIconDamage();
 
         if (currentHealth == 0) {
+            navigator.Instance.GoToMainMenu();
         }
 
     }

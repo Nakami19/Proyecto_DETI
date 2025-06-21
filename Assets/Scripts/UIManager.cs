@@ -70,6 +70,11 @@ public class UIManager : MonoBehaviour
         timerText.text = string.Format("{0:00}:{1:00}:{2:00}", minutes, seconds, miliseconds);
     }
 
+    public float GetTimeElapsed()
+    {
+        return timeElapsed;
+    }
+
     public void UpdateHealthUI(int lives)
     {
         switch (lives)

@@ -53,6 +53,13 @@ public class Character : MonoBehaviour
     [SerializeField] private AudioClip hurtSound;
     [SerializeField] private AudioClip shootSound;
 
+    [Header("Daño por caída")]
+    [SerializeField] private float fallDamageThreshold = -10f; 
+    [SerializeField] private int fallDamageAmount = 1;
+    private bool wasGroundedLastFrame = true;                   
+    private float lastVerticalVelocity = 0f;                    
+
+
     //Variables de plataformas
     Transform currentPlatform = null;
     PlatformMovementDetector movingPlatform = null;
@@ -109,15 +116,30 @@ public class Character : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Guardamos la velocidad vertical antes de actualizarla
+        lastVerticalVelocity = verticalVelocity;
+
         grounded = downCollider.isColliding;
 
         Debug.Log("Esta en el piso:" + grounded);
+
+        // Detectamos aterrizaje
+        if (!wasGroundedLastFrame && grounded)
+        {
+            // Comprobamos si la velocidad vertical fue suficientemente rápida hacia abajo
+            if (lastVerticalVelocity <= fallDamageThreshold)
+            {
+                TakeFallDamage();
+            }
+        }
 
         WallRun();
         if (wallJumpCooldownTimer > 0f)
         {
             wallJumpCooldownTimer -= Time.deltaTime;
         }
+
+        wasGroundedLastFrame = grounded;
 
         Jump();
         PlayerMove();
@@ -146,6 +168,18 @@ public class Character : MonoBehaviour
         {
             Shoot();
         }
+    }
+
+    void TakeFallDamage()
+    {
+        Debug.Log("Daño por caída aplicado");
+
+        //Llamo funcion para tomar daño
+        GameManager.Instance.takeDamage(fallDamageAmount);
+
+        // Reproducir efecto de daño
+        AudioManager.Instance.playSound(hurtSound);
+        UIManager.Instance.PlayerIconDamage();
     }
 
     void PlayerMove()

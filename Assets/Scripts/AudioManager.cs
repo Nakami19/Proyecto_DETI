@@ -25,7 +25,7 @@ public class AudioManager : MonoBehaviour
     }
 
     public void playMusic(AudioClip clip)
-    { 
+    {
         sfxAudioSource.PlayOneShot(clip, 0.5f);
     }
 }
