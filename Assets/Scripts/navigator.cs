@@ -12,6 +12,11 @@ public class navigator : MonoBehaviour
     public string level2Scene = "Level2";
     public string gameOverScene = "Game_Over";
 
+    [Header("Level Songs")]
+    [SerializeField] private AudioClip level1;
+    [SerializeField] private AudioClip level2;
+    [SerializeField] private AudioClip gameOver;
+
     void Awake()
     {
         if (Instance == null)
@@ -33,18 +38,23 @@ public class navigator : MonoBehaviour
     }
 
     public void GoToLevel1()
-    {
+    {        
+        GameManager.Instance.resetHP();
+        AudioManager.Instance.playMusic(level1);
         SceneManager.LoadScene(level1Scene);
     }
 
     public void GoToLevel2()
     {
+        GameManager.Instance.resetHP();
+        AudioManager.Instance.playMusic(level2);
         SceneManager.LoadScene(level2Scene);
     }
 
     public void GoToGameOver()
     {
         SceneManager.LoadScene(gameOverScene);
+        AudioManager.Instance.playMusic(gameOver);
     }
 
     public void ReloadCurrentScene()

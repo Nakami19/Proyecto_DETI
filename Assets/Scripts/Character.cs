@@ -121,7 +121,7 @@ public class Character : MonoBehaviour
 
         grounded = downCollider.isColliding;
 
-        Debug.Log("Esta en el piso:" + grounded);
+        //Debug.Log("Esta en el piso:" + grounded);
 
         // Detectamos aterrizaje
         if (!wasGroundedLastFrame && grounded)
@@ -336,7 +336,7 @@ public class Character : MonoBehaviour
 
         AudioManager.Instance.playSound(shootSound); //Reproduce el sonido de disparo
 
-        Debug.Log("Bullet shot from " + bulletSpawnPoint.position);
+        //Debug.Log("Bullet shot from " + bulletSpawnPoint.position);
     }
 
 }

@@ -119,6 +119,63 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &115667894
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 7738236508717526316, guid: ab991208f62bc1d488ff7841d642c17b, type: 3}
+      propertyPath: m_Name
+      value: GameManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 8987363454978979986, guid: ab991208f62bc1d488ff7841d642c17b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 4.5034
+      objectReference: {fileID: 0}
+    - target: {fileID: 8987363454978979986, guid: ab991208f62bc1d488ff7841d642c17b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 23.45892
+      objectReference: {fileID: 0}
+    - target: {fileID: 8987363454978979986, guid: ab991208f62bc1d488ff7841d642c17b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -30.10781
+      objectReference: {fileID: 0}
+    - target: {fileID: 8987363454978979986, guid: ab991208f62bc1d488ff7841d642c17b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8987363454978979986, guid: ab991208f62bc1d488ff7841d642c17b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8987363454978979986, guid: ab991208f62bc1d488ff7841d642c17b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8987363454978979986, guid: ab991208f62bc1d488ff7841d642c17b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8987363454978979986, guid: ab991208f62bc1d488ff7841d642c17b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8987363454978979986, guid: ab991208f62bc1d488ff7841d642c17b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8987363454978979986, guid: ab991208f62bc1d488ff7841d642c17b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ab991208f62bc1d488ff7841d642c17b, type: 3}
 --- !u!1 &375893271
 GameObject:
   m_ObjectHideFlags: 0
@@ -209,6 +266,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecf4046375ff42a419a506bd714f0f24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playButton: {fileID: 1944417893}
   menuClickSound: {fileID: 8300000, guid: adef5c105a2dce140af82a6ae78ac774, type: 3}
   MainMusic: {fileID: 8300000, guid: 737fb6195a9ee99448085fd519afc4a8, type: 3}
 --- !u!1 &436383282
@@ -742,6 +800,9 @@ MonoBehaviour:
   level1Scene: Level1
   level2Scene: Level2
   gameOverScene: Game_Over
+  level1: {fileID: 8300000, guid: 5d8ce6a9ed6466f419a78c7beb4ccfe4, type: 3}
+  level2: {fileID: 8300000, guid: e863db861e111d647a13475aeca1aa4b, type: 3}
+  gameOver: {fileID: 8300000, guid: bb3f017019ddc8c46a3f2a5eb117f925, type: 3}
 --- !u!4 &1580324653
 Transform:
   m_ObjectHideFlags: 0
@@ -807,7 +868,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7861870024875175517, guid: e567f3daf0312c14eab80bbd134f6891, type: 3}
       propertyPath: m_Volume
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 8080139316494348808, guid: e567f3daf0312c14eab80bbd134f6891, type: 3}
       propertyPath: m_Name
@@ -1247,11 +1308,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1944417891}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ecf4046375ff42a419a506bd714f0f24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playButton: {fileID: 1944417893}
   menuClickSound: {fileID: 8300000, guid: adef5c105a2dce140af82a6ae78ac774, type: 3}
   MainMusic: {fileID: 0}
 --- !u!1 &1976651674
@@ -1343,3 +1405,4 @@ SceneRoots:
   - {fileID: 1976651677}
   - {fileID: 1605470421}
   - {fileID: 1580324653}
+  - {fileID: 115667894}

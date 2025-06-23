@@ -176,6 +176,8 @@ MonoBehaviour:
   bulletSpeed: 20
   hurtSound: {fileID: 8300000, guid: d86053b16fa8398499828ef42db305cb, type: 3}
   shootSound: {fileID: 8300000, guid: 6e71de6d703ca3c4f9a57eabbb3e7b62, type: 3}
+  fallDamageThreshold: -30
+  fallDamageAmount: 1
 --- !u!1 &711559738266589275
 GameObject:
   m_ObjectHideFlags: 0

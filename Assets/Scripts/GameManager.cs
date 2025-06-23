@@ -54,4 +54,9 @@ public class GameManager : MonoBehaviour
         }
 
     }
+
+    public void resetHP()
+    { 
+        currentHealth = 3;
+    }
 }
