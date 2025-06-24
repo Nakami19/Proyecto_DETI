@@ -31,6 +31,12 @@ public class UIManager : MonoBehaviour
     [Header("Temporizador")]
     public TextMeshProUGUI timerText;
     private float timeElapsed = 0f;
+
+    [Header("Terminar nivel")]
+    public Image LevelFinishedOverlay;
+    public LevelCompleteUI levelCompleteUI;
+
+
     #endregion
 
     public static UIManager Instance { get; private set; }
@@ -43,6 +49,7 @@ public class UIManager : MonoBehaviour
         else
         {
             Instance = this;
+            DontDestroyOnLoad(this);
         }
     }
 
@@ -87,7 +94,7 @@ public class UIManager : MonoBehaviour
                 break;
             case 1:
                 healthBar.sprite = health1;
-                StartCoroutine(FadeInOverlay(1f)); // 1 second fade duration
+                StartCoroutine(FadeInOverlay(1f, LowHealthOverlay, 1f)); // 1 second fade duration
                 break;
             case 0:
                 healthBar.sprite = health0;
@@ -117,23 +124,35 @@ public class UIManager : MonoBehaviour
         playerIcon.color = normalColor; // Vuelve al color normal
     }
 
-    private IEnumerator FadeInOverlay(float duration)
+    private IEnumerator FadeInOverlay(float duration, Image overlay, float transparency)
     {
         float elapsed = 0f;
-        Color color = LowHealthOverlay.color;
+        Color color = overlay.color;
         color.a = 0f;
-        LowHealthOverlay.color = color;
+        overlay.color = color;
 
         while (elapsed < duration)
         {
             elapsed += Time.deltaTime;
             color.a = Mathf.Clamp01(elapsed / duration);
-            LowHealthOverlay.color = color;
+            overlay.color = color;
             yield return null;
         }
 
-        color.a = 1f; // Ensure fully opaque at the end
-        LowHealthOverlay.color = color;
+        color.a = transparency; // Ensure fully opaque at the end
+        overlay.color = color;
     }
+
+    public void finishedLevelSequence()
+    {
+        Debug.Log("Empezamos la rutina");
+        StartCoroutine(FadeInOverlay(1f, LevelFinishedOverlay, 1f));
+        float timeTaken = GetTimeElapsed();
+        int lives = GameManager.Instance.getLives();
+        int score = GameManager.Instance.getScore();
+        string rank = GameManager.Instance.getRank();
+        levelCompleteUI.ShowStats(timeTaken, lives, score, rank);
+    }
+
 
 }

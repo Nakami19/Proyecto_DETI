@@ -25,11 +25,13 @@ public class goal_script : MonoBehaviour
             float baseScore = 500;
             //Calculo la puntuacion
             int score = Mathf.RoundToInt(baseScore / time);
+            int lives = GameManager.Instance.getLives();
+            score = score * 100 + (lives * 100);
             Debug.Log(score);
             //Sumo a la puntuacion actual
             GameManager.Instance.score += score;
-            //Ir al siguiente nivel
-            navigator.Instance.GoToLevel2();
+            UIManager.Instance.finishedLevelSequence();
+            
         }
     }
 }

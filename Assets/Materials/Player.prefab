@@ -155,6 +155,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a2620e6476d9b0418007f01d1671fcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  freeLookCam: {fileID: 6185840785394646519}
   speed: 14
   currentSpeed: 14
   gravity: -30

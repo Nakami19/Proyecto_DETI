@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 3
   tags:
   - Trampoline
+  - Goal
   layers:
   - Default
   - TransparentFX

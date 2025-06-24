@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.Cinemachine;
 using UnityEditor.ShaderGraph;
 using UnityEngine;
 
@@ -7,6 +8,7 @@ public class Character : MonoBehaviour
     #region Variables
 
     Camera mainCamera;
+    [SerializeField] private CinemachineCamera freeLookCam;
     //public GameManager gameManager;
 
 
@@ -86,7 +88,7 @@ public class Character : MonoBehaviour
         playerControls.Player.Move.canceled += ctx => moveInput = Vector2.zero; //Captura fin del movimiento
         playerControls.Player.Jump.performed += ctx =>
         {
-            if (grounded)
+            if (controller.isGrounded || grounded)
                 wantJump = true;
             else if (isWallRunning)
                 wantWallJump = true;
@@ -120,7 +122,6 @@ public class Character : MonoBehaviour
         lastVerticalVelocity = verticalVelocity;
 
         grounded = downCollider.isColliding;
-
         //Debug.Log("Esta en el piso:" + grounded);
 
         // Detectamos aterrizaje
@@ -139,7 +140,7 @@ public class Character : MonoBehaviour
             wallJumpCooldownTimer -= Time.deltaTime;
         }
 
-        wasGroundedLastFrame = grounded;
+        wasGroundedLastFrame = grounded || controller.isGrounded;
 
         Jump();
         PlayerMove();
@@ -202,7 +203,7 @@ public class Character : MonoBehaviour
 
     void Jump()
     {
-        if (grounded)
+        if (controller.isGrounded || grounded)
         {
             if (wantJump)
             {
@@ -298,7 +299,7 @@ public class Character : MonoBehaviour
             Bounce(bounceHeight);
         }
 
-        if (grounded)
+        if (controller.isGrounded || grounded)
         {
             PlatformMovementDetector mp = hit.collider.GetComponent<PlatformMovementDetector>();
             if (mp != null)
@@ -337,6 +338,15 @@ public class Character : MonoBehaviour
         AudioManager.Instance.playSound(shootSound); //Reproduce el sonido de disparo
 
         //Debug.Log("Bullet shot from " + bulletSpawnPoint.position);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Goal"))
+        { 
+            this.OnDisable();
+            freeLookCam.enabled = false;
+        }
     }
 
 }

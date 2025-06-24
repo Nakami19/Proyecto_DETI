@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     private int currentHealth = 3; // Number of lives the player has
     public int score;
     private int time;
+    private string rank;
 
     public static GameManager Instance { get; private set; }
     #endregion
@@ -54,9 +55,39 @@ public class GameManager : MonoBehaviour
         }
 
     }
-
     public void resetHP()
     { 
         currentHealth = 3;
+    }
+
+    public int getLives()
+    { 
+        return currentHealth;
+    }
+
+    public int getScore()
+    {
+        return score;
+    }
+
+    public string getRank()
+    {
+        if (score > 1000)
+        {
+            rank = "S";
+        }
+        else if (score > 700)
+        {
+            rank = "A";
+        }
+        else if (score > 500)
+        {
+            rank = "B";
+        }
+        else 
+        {
+            rank = "C";
+        }
+            return rank;
     }
 }

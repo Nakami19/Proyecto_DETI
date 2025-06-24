@@ -40,14 +40,14 @@ public class navigator : MonoBehaviour
     public void GoToLevel1()
     {        
         GameManager.Instance.resetHP();
-        AudioManager.Instance.playMusic(level1);
+        AudioManager.Instance.playMusic(level1, true);
         SceneManager.LoadScene(level1Scene);
     }
 
     public void GoToLevel2()
     {
         GameManager.Instance.resetHP();
-        AudioManager.Instance.playMusic(level2);
+        AudioManager.Instance.playMusic(level2, true);
         SceneManager.LoadScene(level2Scene);
     }
 
