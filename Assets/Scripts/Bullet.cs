@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class Bullet : MonoBehaviour
 {
@@ -21,6 +22,14 @@ public class Bullet : MonoBehaviour
         if (Physics.SphereCast(transform.position, radius, direction, out RaycastHit hit, distance))
         {
             Debug.Log("Bullet hit: " + hit.collider.name);
+            // Verifica si el objeto golpeado es un enemigo
+            if (hit.collider.CompareTag("Enemy")) 
+            {
+                // Destruye al enemigo
+                Destroy(hit.collider.gameObject);
+                // aumento puntaje
+                //GameManager.Instance.score += 10;
+            }
             gameObject.SetActive(false); // Deactivate bullet
             return;
         }

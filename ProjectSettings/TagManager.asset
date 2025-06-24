@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Trampoline
   - Goal
+  - bullet
+  - Enemy
   layers:
   - Default
   - TransparentFX
