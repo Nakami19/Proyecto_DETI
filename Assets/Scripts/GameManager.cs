@@ -51,6 +51,9 @@ public class GameManager : MonoBehaviour
         UIManager.Instance.PlayerIconDamage();
 
         if (currentHealth == 0) {
+            //reinicio puntaje
+            score = 0;
+            //vuelvo al menu
             navigator.Instance.GoToMainMenu();
         }
 

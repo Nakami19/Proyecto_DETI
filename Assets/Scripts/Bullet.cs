@@ -28,7 +28,7 @@ public class Bullet : MonoBehaviour
                 // Destruye al enemigo
                 Destroy(hit.collider.gameObject);
                 // aumento puntaje
-                //GameManager.Instance.score += 10;
+                GameManager.Instance.score += 10;
             }
             gameObject.SetActive(false); // Deactivate bullet
             return;

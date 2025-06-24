@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class goal_script : MonoBehaviour
 {
+    private bool nivelFinalizado = false;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -18,8 +20,12 @@ public class goal_script : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-           //Obtengo tiempo transcurrido
-           float time = UIManager.Instance.GetTimeElapsed();
+            if (nivelFinalizado) return;
+
+            nivelFinalizado = true;
+
+            //Obtengo tiempo transcurrido
+            float time = UIManager.Instance.GetTimeElapsed();
             if (time <= 0f) return; // evita división por cero
             //numero como base para la puntuacion
             float baseScore = 500;
