@@ -1608,7 +1608,7 @@ GameObject:
   - component: {fileID: 253384908704612195}
   - component: {fileID: 2060540198172775637}
   m_Layer: 5
-  m_Name: Neon White
+  m_Name: Ashley
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1621,17 +1621,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7976903280764323550}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.6606, y: 0.6606, z: 0.6606}
+  m_LocalScale: {x: 0.2711785, y: 0.2711785, z: 0.2711785}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6391993328548673202}
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -665, y: -597}
-  m_SizeDelta: {x: 1066, y: 1745}
+  m_AnchoredPosition: {x: -669, y: -363}
+  m_SizeDelta: {x: 2268, y: 3000.558}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &253384908704612195
 CanvasRenderer:
@@ -1661,7 +1661,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: d6629580330557f49a7dae1eca0c0859, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d277aee89292e3840a8365d6c0aab30f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
