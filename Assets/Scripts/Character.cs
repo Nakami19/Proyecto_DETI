@@ -349,4 +349,14 @@ public class Character : MonoBehaviour
         }
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log(collision.collider.name);
+        if (collision.collider.tag == "Player")
+        {
+            Debug.Log("Dano");
+            GameManager.Instance.takeDamage(1);
+        }
+    }
+
 }

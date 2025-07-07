@@ -33,5 +33,15 @@ public class movimiento_ave_simple : MonoBehaviour
             destino = mirandoA ? puntoB : puntoA;
         }
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log(collision.collider.name);
+        if (collision.collider.tag == "Player")
+        {
+            Debug.Log("Dano");
+            GameManager.Instance.takeDamage(1);
+        }
+    }
 }
 
