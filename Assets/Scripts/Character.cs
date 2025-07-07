@@ -56,10 +56,10 @@ public class Character : MonoBehaviour
     [SerializeField] private AudioClip shootSound;
 
     [Header("Daño por caída")]
-    [SerializeField] private float fallDamageThreshold = -10f; 
+    [SerializeField] private float fallDamageThreshold = -10f;
     [SerializeField] private int fallDamageAmount = 1;
-    private bool wasGroundedLastFrame = true;                   
-    private float lastVerticalVelocity = 0f;                    
+    private bool wasGroundedLastFrame = true;
+    private float lastVerticalVelocity = 0f;
 
 
     //Variables de plataformas
@@ -75,7 +75,6 @@ public class Character : MonoBehaviour
     float verticalVelocity;
     bool wantJump;
     bool wantWallJump;
-    bool hasBounced = false;
 
     #endregion
 
@@ -158,7 +157,7 @@ public class Character : MonoBehaviour
             controller.Move(newWorldPos - transform.position);
         }
 
-        if (Input.GetKeyDown(KeyCode.V)) 
+        if (Input.GetKeyDown(KeyCode.V))
         {
             GameManager.Instance.takeDamage(1);
             AudioManager.Instance.playSound(hurtSound); //Reproduce el sonido de da�o
@@ -207,13 +206,18 @@ public class Character : MonoBehaviour
         {
             if (wantJump)
             {
-                verticalVelocity = Mathf.Sqrt(jumpHeight * -2f * gravity); //Salto                
+                verticalVelocity = Mathf.Sqrt(jumpHeight * -2f * gravity); //Salto
+                wantJump = false;
             }
             else
             {
-                verticalVelocity = -1f; //Mantiene al jugador en el suelo
+                // Solo si no estamos rebotando o saltando, mantenemos en el suelo.
+                if (verticalVelocity < 0.1f)
+                {
+                    verticalVelocity = -1f; // Mantiene al jugador en el suelo cuando no hay otra fuerza vertical
+                }
             }
-            wantJump = false; //Reinicia el salto
+           
         }
         else
         {
@@ -295,6 +299,7 @@ public class Character : MonoBehaviour
         //Detectar trampolin
         if (hit.collider.CompareTag("Trampoline"))
         {
+
             //Llamo al salto
             Bounce(bounceHeight);
         }
@@ -319,7 +324,6 @@ public class Character : MonoBehaviour
     public void Bounce(float force)
     {
         verticalVelocity = Mathf.Sqrt(force * -2f * gravity);
-        hasBounced = true;
     }
 
     public void Shoot()
@@ -343,7 +347,7 @@ public class Character : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Goal"))
-        { 
+        {
             this.OnDisable();
             freeLookCam.enabled = false;
         }
