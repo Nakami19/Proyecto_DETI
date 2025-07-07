@@ -19,20 +19,20 @@ public class Bullet : MonoBehaviour
         float distance = speed * Time.deltaTime;
 
         // Cast a sphere forward to detect potential hit
-        if (Physics.SphereCast(transform.position, radius, direction, out RaycastHit hit, distance))
-        {
-            Debug.Log("Bullet hit: " + hit.collider.name);
-            // Verifica si el objeto golpeado es un enemigo
-            if (hit.collider.CompareTag("Enemy")) 
-            {
-                // Destruye al enemigo
-                Destroy(hit.collider.gameObject);
-                // aumento puntaje
-                GameManager.Instance.score += 10;
-            }
-            gameObject.SetActive(false); // Deactivate bullet
-            return;
-        }
+        //if (Physics.SphereCast(transform.position, radius, direction, out RaycastHit hit, distance))
+        //{
+        //    Debug.Log("Bullet hit: " + hit.collider.name);
+        //    // Verifica si el objeto golpeado es un enemigo
+        //    if (hit.collider.CompareTag("Enemy")) 
+        //    {
+        //        // Destruye al enemigo
+        //        Destroy(hit.collider.gameObject);
+        //        // aumento puntaje
+        //        GameManager.Instance.score += 10;
+        //    }
+        //    gameObject.SetActive(false); // Deactivate bullet
+        //    return;
+        //}
 
         // Move forward if nothing hit
         transform.Translate(direction * distance, Space.World);
@@ -41,6 +41,20 @@ public class Bullet : MonoBehaviour
         lifeTimer += Time.deltaTime;
         if (lifeTimer > lifetime)
         {
+            gameObject.SetActive(false);
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.name != "Player")
+        {
+            Debug.Log("Bullet hit: " + collision.collider.name);
+            if (collision.collider.tag  == "Enemy")
+            {
+                Destroy(collision.collider.gameObject);
+                GameManager.Instance.score += 10;
+            }
             gameObject.SetActive(false);
         }
     }
