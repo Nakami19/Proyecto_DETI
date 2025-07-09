@@ -351,6 +351,10 @@ public class Character : MonoBehaviour
             this.OnDisable();
             freeLookCam.enabled = false;
         }
+        if (other.CompareTag("KillZone"))
+        {
+            GameManager.Instance.takeDamage(3);
+        }
     }
 
     private void OnCollisionEnter(Collision collision)

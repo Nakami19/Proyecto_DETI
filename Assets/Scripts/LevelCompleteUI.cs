@@ -2,6 +2,7 @@ using System.Collections;
 using TMPro; // if using TextMeshPro
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class LevelCompleteUI : MonoBehaviour
 {
@@ -90,9 +91,19 @@ public class LevelCompleteUI : MonoBehaviour
         rankValue.text = rank;
         yield return new WaitForSeconds(3f);
 
+        Scene currentScene = SceneManager.GetActiveScene();
+        print(currentScene.name);
 
         //Ir al siguiente nivel
-        navigator.Instance.GoToLevel2();
+        if (currentScene.name == "Level2")
+        {
+            navigator.Instance.GoToMainMenu();
+        }
+        else 
+        {
+            navigator.Instance.GoToLevel2();
+        }
+            
     }
 
     string FormatTime(float t)
